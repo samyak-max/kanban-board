@@ -13,7 +13,7 @@ body{
 .kanban-column-div{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100vh - 9rem);
     overflow-y: auto;
     overflow-x: auto;
     padding: 2rem 3rem;

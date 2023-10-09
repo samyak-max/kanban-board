@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import "../styles/CustomDropdown.css";
+import { useState, useEffect, useRef } from "react";
+import "../styles/Dropdown.css";
 import Cookies from "js-cookie";
+import { MdDisplaySettings } from "react-icons/md";
+import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri";
 
-
-const CustomDropdown = ({ groupingOption, setGroupingOption, sortingOption, setSortingOption}) => {
+const Dropdown = ({ groupingOption, setGroupingOption, sortingOption, setSortingOption}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -33,41 +34,40 @@ const CustomDropdown = ({ groupingOption, setGroupingOption, sortingOption, setS
     };
   }, [dropdownRef]);
 
-  const handleOptionClick = () => {
-    setIsOpen(false);
-  };
-
   return (
     <div className="custom-dropdown" ref={dropdownRef}>
       <div className="dropdown-header" onClick={() => setIsOpen(!isOpen)}>
-        <div className="dropdown-header-title">🎛️ Display</div>
-        <div className="dropdown-icon">{isOpen ? "▲" : "▼"}</div>
+        <div className="display-dropdown-icon">
+          <div className="dropdown-icon"><MdDisplaySettings size={15}/></div>
+          <div className="dropdown-header-title">Display</div>
+        </div>
+        <div className="dropdown-icon">{isOpen ? <RiArrowUpSLine size={15}/> : <RiArrowDownSLine size={15}/>}</div>
       </div>
       {isOpen && (
         <div className="dropdown-options">
           <div className="inner-dropdown-option">
-            <div htmlFor="grouping-option">Grouping: </div>
+            <div htmlFor="grouping-option">Grouping </div>
             <select
               id="grouping-option"
               value={groupingOption}
               onChange={handleGroupingOptionChange}
               className="grouping-option-select"
             >
-              <option value="status" onClick={() => handleOptionClick()}>Status</option>
-              <option value="user" onClick={() => handleOptionClick()}>User</option>
-              <option value="priority" onClick={() => handleOptionClick()}>Priority</option>
+              <option value="status">Status</option>
+              <option value="user">User</option>
+              <option value="priority">Priority</option>
             </select>
           </div>
           <div className="inner-dropdown-option">
-            <div htmlFor="sorting-option">Ordering: </div>
+            <div htmlFor="sorting-option">Ordering </div>
             <select
               id="sorting-option"
               value={sortingOption}
               onChange={handleSortingOptionChange}
               className="sorting-option-select"
             >
-              <option value="priority-desc" onClick={() => handleOptionClick()}>Priority</option>
-              <option value="title-asc" onClick={() => handleOptionClick()}>Title</option>
+              <option value="priority-desc">Priority</option>
+              <option value="title-asc">Title</option>
             </select>
           </div>
         </div>
@@ -76,4 +76,4 @@ const CustomDropdown = ({ groupingOption, setGroupingOption, sortingOption, setS
   );
 };
 
-export default CustomDropdown;
+export default Dropdown;
