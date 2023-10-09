@@ -1,5 +1,3 @@
-##Hosted at https://65247e2fd2f2be00085de630--sensational-cuchufli-343f86.netlify.app/
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
