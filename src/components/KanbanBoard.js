@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getTickets, getUsers } from "../utils/api";
 import { groupBy, getUserNameById } from "../utils/helpers";
-import DisplayDropdown from "./DisplayDropdown";
 import KanbanColumn from "./KanbanColumn";
 import "../styles/KanbanBoard.css";
 import Cookies from "js-cookie";
+import CustomDropdown from "./Dropdown";
 
 const KanbanBoard = () => {
   const [tickets, setTickets] = useState([]);
@@ -134,7 +134,7 @@ const KanbanBoard = () => {
   return (
     <div className="kanban-board">
       <header className="header">
-        <DisplayDropdown
+        <CustomDropdown
           groupingOption={groupingOption}
           setGroupingOption={setGroupingOption}
           sortingOption={sortingOption}
